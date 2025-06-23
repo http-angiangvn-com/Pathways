@@ -1,6 +1,0 @@
-{%layout none%}
-{%paginate collection.products by settings.collection_pagination_limit %}
-{%for product in collection.products%}
-	{% include 'product-loop' with page: paginate.current_page, section:'collection' %}
-{%endfor%}
-{% endpaginate %} 
