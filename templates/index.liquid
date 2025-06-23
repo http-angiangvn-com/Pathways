@@ -1,0 +1,416 @@
+{%- if settings.show_home_banner_slider -%}
+{% include 'home-slider' %}
+{%- endif -%}
+
+{%- if settings.show_home_search -%}
+<div class="section-home-search">
+	<div class="container">
+		<div class="banner-content">
+			<div class="banner-search">
+				<div class="search-where">
+					<div class="search-icon">
+						<i class="fa fa-search"></i>
+					</div>
+					<div class="search-form">
+						<select id="search_where">
+							<option value="none" selected>{{settings.home_search_placeholder_1}}</option>
+							{% for vendor in collections.all.all_vendors%}	
+							<option value="{{vendor}}">{{vendor}}</option>
+							{% endfor %}
+						</select>
+						<span class="search-arrow-value"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128"><g><path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path></g></svg></span>
+					</div>
+				</div>
+
+				{% comment %}
+				<div class="search-person">
+					<div class="search-icon">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</div>
+					<div class="search-form">
+						<span class="search-person-value" id="search_person">1 Adults - 0 Children</span>
+						<span class="search-arrow-value"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128"><g><path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path></g></svg></span>
+					</div>
+				</div>
+				{% endcomment %}
+				<div class="search-when">
+					<div class="search-icon">
+						<i class="fa fa-calendar" aria-hidden="true"></i>
+					</div>
+					<div class="search-form">
+						<input type="hidden" name="date_range" id="search_when" value="" placeholder="{{settings.home_search_placeholder_2}}">
+						<div class="t-datepicker">
+							<div class="t-check-in"></div>
+							<div class="t-check-out"></div>
+						</div>
+						<span class="search-arrow-value"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" x="0" y="0" viewBox="0 0 128 128"><g><path d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"></path></g></svg></span>
+					</div>
+				</div>
+				<div class="search-btn">
+					<button tyle="button" class="btn-search-form button">
+						<span class="box-icon">								
+							{{settings.home_search_btn_title}}			
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{%- if settings.show_home_about_us -%}
+<div class="section-home-about_us">
+	<div class="container">
+		<div class="row">
+			<div class="about_us--left col-md-12 col-lg-6">
+				<div class="about_us--body">
+					<div class="body-about-wrapper">
+						<div class="section-main-title">
+							<span class="sub-title te-subtitle">{{settings.home_about_us_title}}</span>
+							<h2 class="te-title">{{settings.home_about_us_main_title}}</h2>
+						</div>
+						<div class="text-box">
+							<p>{{settings.home_about_us_desc}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="about_us--body-travic_icon_box">
+					<div class="single-item">
+						<div class="icon-box te-icon">
+							<i class="fa fa-globe" aria-hidden="true"></i>
+						</div>
+						<h3 class="te-title">{{settings.home_about_us_service_title_1}}</h3>
+						<p class="te-text">{{settings.home_about_us_service_desc_1}}</p>
+					</div>
+					<div class="single-item">
+						<div class="icon-box te-icon">
+							<i class="fa fa-database" aria-hidden="true"></i>
+						</div>
+						<h3 class="te-title">{{settings.home_about_us_service_title_2}}</h3>
+						<p class="te-text">{{settings.home_about_us_service_desc_2}}</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="about_us--right col-md-12 col-lg-6">
+				<div class="image-box">
+					<figure class="image image-1">
+						<a href="{{settings.home_about_us_banner_link_1}}"><img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'home_about_us_banner_1.jpg' | asset_url}}" alt="{{settings.home_about_us_banner_alt_1}}"></a>
+					</figure>
+					<figure class="image image-2">
+						<a href="{{settings.home_about_us_banner_link_1}}"><img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'home_about_us_banner_2.jpg' | asset_url}}" alt="{{settings.home_about_us_banner_alt_2}}"></a>
+					</figure>
+					<figure class="image image-3">
+						<a href="{{settings.home_about_us_banner_link_1}}"><img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'home_about_us_banner_3.jpg' | asset_url}}" alt="{{settings.home_about_us_banner_alt_3}}"></a>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{%- if settings.show_home_why_choose -%}
+<div class="section-home-why_choose">
+	<div class="container">
+		<div class="why_choose_title">
+			<div class="section-main-title text-center">
+				<span class="sub-title te-subtitle">{{settings.home_why_choose_title}}</span>
+				<h2 class="te-title">{{settings.home_why_choose_main_title}}</h2>
+			</div>
+		</div>
+		<div class="d-flex why_choose--wrapper">
+			{% for i in (1..4) %}
+			{% capture home_why_choose_show %}show_home_why_choose_{{i}}{%endcapture%}
+			{% if settings[home_why_choose_show] %}
+			{% capture home_why_choose_banner_alt %}home_why_choose_banner_alt_{{i}}{%endcapture%}
+			{% capture home_why_choose_banner %}home_why_choose_banner_{{i}}.jpg{%endcapture%}
+			{% capture home_why_choose_banner_title %}home_why_choose_banner_title_{{i}}{%endcapture%}
+			{% capture home_why_choose_banner_content %}home_why_choose_banner_content_{{i}}{%endcapture%}
+			{% capture home_why_choose_banner_link %}home_why_choose_banner_link_{{i}}{%endcapture%}
+			<div class="why_choose--item">
+				<div class="inner-box te-icon-box">
+					<div class="icon-box te-icon">
+						<img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ home_why_choose_banner | asset_url}}" alt="{{settings[home_why_choose_banner_alt]}}" />
+					</div>
+					<h3>
+						<a class="te-title" href="{{settings[home_why_choose_banner_link]}}">{{settings[home_why_choose_banner_title]}}</a>
+					</h3>
+					<p class="te-text">{{settings[home_why_choose_banner_content]}}</p>
+				</div>
+			</div>
+			{%- endif -%}
+			{%endfor%}
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{%- if settings.show_home_collection -%}
+<div class="section-home-tabs-collection lazyload">
+	<div class="container">
+
+		<div class="tabs-collection--box">
+			<div class="why_choose_title">
+				<div class="section-main-title">
+					<span class="sub-title te-subtitle">{{settings.home_collection_title}}</span>
+					<h2 class="te-title">{{settings.home_collection_main_title}}</h2>
+				</div>
+			</div>
+			<div class="tab-btn-box">
+				<ul class="tab-btns tab-buttons clearfix">
+					{%assign count = -1 %}
+					{% for i in (1..7) %}
+					{% capture home_collection_tab_show %}show_home_collection_tab_{{i}}{% endcapture %}
+					{% if settings[home_collection_tab_show] or forloop.first %}
+					{% capture home_collection_title_tab %}home_collection_title_tab_{{i}}{% endcapture %}
+					{% capture home_collection_col_tab_btn %}home_collection_col_tab_{{i}}{% endcapture %}
+					{%assign count = count | plus: 1 %}
+					<li class="tab-btn{% if forloop.first %} active-btn{%endif%}" data-index="tab-mb-{{count}}" data-handle="/collections/{{settings[home_collection_col_tab_btn]}}" data-tab="#tab-{{i}}">{{settings[home_collection_title_tab]}}</li>
+					{%endif%}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<div class="tabs-content">
+			{% for i in (1..7) %}
+			{% capture home_collection_tab_show %}show_home_collection_tab_{{i}}{% endcapture %}
+			{% if settings[home_collection_tab_show] or forloop.first %}
+			{% capture home_collection_col_tab %}home_collection_col_tab_{{i}}{% endcapture %}
+			{% assign homeCollection = settings[home_collection_col_tab] %}
+			{% assign homeCollectionLimit = settings.home_collection_limit %}
+			<div class="tab{% if forloop.first %} collection-loaded active-tab{%endif%}" id="tab-{{i}}">
+				<div class="home-collection-list row clearfix ">
+					{%- if forloop.first -%}
+					{% for product in collections[homeCollection].products limit: homeCollectionLimit %}
+					<div class="col-lg-3 col-md-6 col-sm-12 tours-block">
+						{% include 'product-loop' %}
+					</div>
+					{%- endfor -%}
+					{%- else -%}
+					{% for i in (1..homeCollectionLimit) %}
+					<div class="col-lg-3 col-md-6 col-sm-12 tours-block">
+						{% include 'product-loop-skeleton' %}
+					</div>
+					{%endfor%}
+					{%- endif -%}
+				</div>
+			</div>
+			{%endif%}
+			{% endfor %}
+
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{%- if settings.show_home_tour_types -%}
+<div class="section-home-tour_types">
+	<div class="container">
+		<div class="why_choose_title">
+			<div class="section-main-title text-center">
+				<span class="sub-title te-subtitle">{{settings.home_tour_types_title}}</span>
+				<h2 class="te-title">{{settings.home_tour_types_main_title}}</h2>
+			</div>
+		</div>
+		<div class="owl-carousel owl-theme owl-dots-style">
+			{% for i in (1..12) %}
+			{% capture home_tour_types_show %}home_tour_types_show_{{i}}{% endcapture %}
+			{%- if settings[home_tour_types_show] -%}
+			{% capture home_tour_types_banner %}home_tour_types_banner_{{i}}.jpg{% endcapture %}
+			{% capture home_tour_types_title %}home_tour_types_title_{{i}}{% endcapture %}
+			{% capture home_tour_types_link %}home_tour_types_link_{{i}}{% endcapture %}
+			<div class="category-block-one">
+				<div class="inner-box">
+					<figure class="image-box">
+						<img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{home_tour_types_banner | asset_url}}" alt="{{settings[home_tour_types_title] | strip_html}}">
+					</figure>
+					<h4><a class="te-title" href="{{settings.home_tour_types_link}}">{{settings[home_tour_types_title]}}</a></h4>
+				</div>
+			</div>
+			{%- endif -%}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{%- if settings.show_home_video -%}
+<section class="section-home-video">
+	<picture>
+		<source media="(max-width:768px)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-srcset="{{'mb_home_video_banner.jpg' | asset_url}}">
+		<img class="bg-layer parallax-bg lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'home_video_banner.jpg' | asset_url}}" />
+	</picture>
+	<div class="inner-box">
+		<div class="container">
+			<span class="big-text te-title">{{settings.home_video_title}}</span>
+			<div class="video-btn">
+				<a data-fancybox href="{{settings.home_video_link}}">
+					<img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'play-icon.png' | asset_url}}" alt="{{settings.home_video_title}}">
+					<span class="border-animation border-1"></span>
+					<span class="border-animation border-2"></span>
+					<span class="border-animation border-3"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+{%- endif -%}
+
+{%- if settings.show_home_top_place -%}
+<section class="section-home-top_visited">
+	<div class="container">
+		<div class="top_visited_title">
+			<div class="section-main-title text-center">
+				<span class="sub-title te-subtitle">{{settings.home_top_place_title}}</span>
+				<h2 class="te-title">{{settings.home_top_place_main_title}}</h2>
+			</div>
+		</div>
+		<div class="row">
+			{% for i in (1..6) %}
+			{% capture home_top_place_show %}home_top_place_show_{{i}}{% endcapture %}
+			{%- if settings[home_top_place_show] -%}
+			{% capture home_top_place_banner %}home_top_place_banner_{{i}}.jpg{% endcapture %}
+			{% capture home_top_place_title %}home_top_place_title_{{i}}{% endcapture %}
+			{% capture home_top_place_link %}home_top_place_link_{{i}}{% endcapture %}
+
+			<div class="col-lg-4 col-md-6 col-sm-12 top_visited--item">
+				<div class="place-block-one">
+					<div class="inner-box te-icon-box">
+						<img class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{home_top_place_banner | asset_url}}" alt="{{settings[home_top_place_title] | strip_html}}">
+						<span class="text te-title">
+							<a href="{{settings[home_top_place_link]}}">{{settings[home_top_place_title]}}</a>
+						</span>
+					</div>
+				</div>
+			</div>
+			{%- endif -%}
+			{%endfor%}
+		</div>
+	</div>
+</section>
+{%- endif -%}
+
+{%- if settings.show_home_testimonials -%}
+<section class="section-home-testimonials lazyload">
+	<div class="container">
+		<div class="top_visited_title">
+			<div class="section-main-title text-center">
+				<span class="sub-title te-subtitle">{{settings.home_testimonials_title}}</span>
+				<h2 class="te-title">{{settings.home_testimonials_main_title}}</h2>
+			</div>
+		</div>
+		<div class="owl-carousel owl-theme nav-style-one owl-dots-style">
+			{% for i in (1..6) %}
+			{% capture home_testimonials_show %}home_testimonials_show_{{i}}{% endcapture %}
+			{%- if settings[home_testimonials_show] -%}
+			{% capture home_testimonials_avatar %}home_testimonials_avatar_{{i}}.jpg{% endcapture %}
+			{% capture home_testimonials_name %}home_testimonials_name_{{i}}{% endcapture %}
+			{% capture home_testimonials_job %}home_testimonials_job_{{i}}{% endcapture %}
+			{% capture home_testimonials_content %}home_testimonials_content_{{i}}{% endcapture %}
+			{% capture home_testimonials_rating %}home_testimonials_rating_{{i}}{% endcapture %}
+			<div class="testimonial-block-one">
+				<div class="inner-box te-testimonial">
+					<div class="rating">
+						{% for j in (1..5) %}
+						{% if j <= settings[home_testimonials_rating] %}<i class="fa fa-star"></i>{%else%}<i class="fa fa-star-o"></i>{%endif%}
+					{% endfor %}
+				</div>
+				<div class="author-box">
+					<figure class="author-thumb">
+						<img width="60" height="60" class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{home_testimonials_avatar | asset_url}}" class="post-image" alt="{{settings[home_testimonials_name] | strip_html}}" />
+					</figure>
+					<h3 class="te-title">{{settings[home_testimonials_name]}}</h3>
+					<span class="designation te-designation">{{settings[home_testimonials_job]}}</span>
+				</div>
+				<p class="te-text">{{settings[home_testimonials_content]}}</p>
+			</div>
+		</div>
+		{%- endif -%}
+		{%endfor%}
+	</div>
+	</div>
+</section>
+{%- endif -%}
+
+{%- if settings.show_home_blog -%}
+<section class="section-home-blog">
+	<div class="container">
+		<div class="top_visited_title">
+			<div class="section-main-title text-center">
+				<span class="sub-title te-subtitle">{{settings.home_blog_title}}</span>
+				<h2 class="te-title">{{settings.home_blog_main_title}}</h2>
+			</div>
+		</div>
+		<div class="owl-carousel owl-theme owl-dots-style">
+			{% for article in blogs[settings.home_blog_main_select].articles %}
+			<div class="news-block">
+				<div class="news-block-one">
+					<div class="inner-box te-blog">
+						<figure class="image-box">
+							<a href="{{article.url}}">
+								<img class="" src="{{article.image.src | product_img_url: 'grande'}}" class="post-image" />
+							</a>
+						</figure>
+						<div class="lower-content">
+							<ul class="post-info mb_15">
+								<li class="te-category">
+									<a href="{{article.url}}" rel="category tag">{{article.blog.title}}</a>
+								</li>
+								<li class="te-meta"><i class="fa fa-calendar" aria-hidden="true"></i>{{ article.published_at | date: '%d Tháng %m, %Y' }}</li>
+							</ul>
+							<h3 class="te-title">
+								<a href="{{article.url}}">{{article.title}}</a>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{%- endif -%}
+
+{%- if settings.show_home_newsletter -%}
+<div class="section-home-newsletter">
+	<div class="container">
+		<div class="newsletter-block newsletter-widthAuto row align-items-center lazyload">
+			<div class="col-lg-6 col-md-12 col-sm-12 text-column">
+				<div class="newsletter-title">
+					{%- if settings.home_newsletter_title != blank %}<h3>{{settings.home_newsletter_title | newline_to_br}}</h3>{%- endif -%}
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-sm-12 form-column">
+				<div class="newsletter-content newsletter-form">
+					{%- capture formFooter -%}
+					{%- form 'customer' -%}
+					{%- if form.posted_successfully? -%}<p id="newsletter-success" class="d-none popup-form-success success">Cám ơn bạn đã đăng ký email theo dõi!</p>{% endif %}
+					<div class="form-group input-group">
+						<input type="hidden" id="newsletter-tags" name="contact[tags]" value="Đăng kí nhận tin" />     
+						<input required type="email" name="contact[email]" class="form-control newsletter-input" id="newsletter-email" 
+									 pattern="^(.)+@[A-Za-z0-9]([A-Za-z0-9.\-]*[A-Za-z0-9])?\.[A-Za-z]{1,13}$" placeholder="{{settings.home_newsletter_email}}" aria-label="Email Address">
+						<div class="input-group-btn"><button type="submit"  class="button dark cta-submitform newsletter-btn">{{settings.home_newsletter_btn}} <i class="fa fa-long-arrow-right"></i></button></div>
+					</div>
+					<div class="sitebox-recaptcha d-none" >
+						This site is protected by reCAPTCHA and the Google
+						<a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> 
+						and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.
+					</div>	
+					{%- endform -%}
+					{%- endcapture -%}
+					{{ formFooter | replace: 'script', 'noscript' | replace:'noscript src=', 'noscript data-src=' }}
+					<p class="newsletter-error"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+
+
+
+

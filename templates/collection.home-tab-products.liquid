@@ -1,0 +1,8 @@
+{%- layout none -%}
+{%- assign homeCollectionLimit = settings.home_collection_limit -%}
+{% assign template = 'index' %}
+{%- for product in collection.products limit: homeCollectionLimit -%}
+<div class="col-lg-3 col-md-6 col-sm-12 tours-block">
+{%- include 'product-loop' with lazyload: false -%}
+</div>
+{%- endfor -%}

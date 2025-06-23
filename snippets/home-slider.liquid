@@ -1,0 +1,33 @@
+<div id="home-slider">
+	<div class="slider-owl">
+{%- for i in (1..1) -%}
+    {%- capture show_slide -%}show_home_banner_slider_{{ i }}{%- endcapture -%}
+    {%- capture image -%}home_banner_slider_{{ i }}.jpg{%- endcapture -%}
+    {%- capture image_mb -%}mb_home_banner_slider_{{ i }}.jpg{%- endcapture -%}
+    {%- capture title1 -%}home_banner_slider_title_one_{{i}}{%- endcapture -%}
+    {%- capture title2 -%}home_banner_slider_title_two_{{i}}{%- endcapture -%}
+    {%- capture desc -%}home_banner_slider_desc_{{i}}{%- endcapture -%}
+
+		<div class="slider-item">
+			<div class="slide--image">
+					<picture>
+						<source media="(max-width: 767px)" srcset="{{ image_mb | asset_url}}" />
+						<source media="(min-width: 768px)" srcset="{{ image | asset_url}}" />
+						<img src="{{ image | asset_url }}" alt="{{ settings[title2] | strip_html | escape }}" />
+					</picture>
+			</div>
+      <div class="slide--body">
+        <div class="container">
+            <div class="content-box">
+              <span class="special-text te-subtitle">{{settings[title1]}}</span>
+              <h2 class="te-title">{{settings[title2]}}</h2>
+              <p class="te-text">{{settings[desc]}}</p>
+            </div> 
+        </div>
+      </div>
+		</div>
+
+		{%- endfor -%}
+		
+	</div> 
+</div>

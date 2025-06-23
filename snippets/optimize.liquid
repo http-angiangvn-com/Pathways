@@ -1,0 +1,216 @@
+{%- if template contains 'index' -%}
+  {%-capture sliderTemplate -%}
+    {%- for i in (2..4) -%}
+    {%- capture show_slide -%}show_home_banner_slider_{{ i }}{%- endcapture -%}
+    {%- capture image -%}home_banner_slider_{{ i }}.jpg{%- endcapture -%}
+    {%- capture image_mb -%}mb_home_banner_slider_{{ i }}.jpg{%- endcapture -%}
+    {%- capture title1 -%}home_banner_slider_title_one_{{i}}{%- endcapture -%}
+    {%- capture title2 -%}home_banner_slider_title_two_{{i}}{%- endcapture -%}
+    {%- capture desc -%}home_banner_slider_desc_{{i}}{%- endcapture -%}
+		{%- if settings[show_slide] -%}
+		<div class="slider-item">
+			<div class="slide--image">
+					<picture>
+						<source media="(max-width: 767px)" srcset="{{ image_mb | asset_url}}" />
+						<source media="(min-width: 768px)" srcset="{{ image | asset_url}}" />
+						<img src="{{ image | asset_url }}" alt="{{ settings[title2] | strip_html | escape }}" />
+					</picture>
+			</div>
+      <div class="slide--body">
+        <div class="container">
+            <div class="content-box">
+              <span class="special-text te-subtitle">{{settings[title1]}}</span>
+              <h2 class="te-title">{{settings[title2]}}</h2>
+              <p class="te-text">{{settings[desc]}}</p>
+            </div> 
+        </div>
+      </div>
+		</div>
+		{%- endif -%}
+		{%- endfor -%}
+  {%- endcapture -%}
+{%- endif -%}
+<script async>
+  {%- if template contains 'index' -%}
+    const opSldier = () => {
+      const bannerSlider = $('#home-slider .slider-owl');
+      bannerSlider.addClass('owl-carousel').append(`{{sliderTemplate}}`);
+      bannerSlider.owlCarousel({
+          "loop": true,
+          "autoplay": true,
+          "margin": 1,
+          "nav": false,
+          "dots": false,
+          "smartSpeed": 1000,
+          "autoplayTimeout": 6000,
+          "animateOut": "fadeOut",
+          "animateIn": "fadeIn",
+          "navText": ['<span class="fa fa-angle-left"></span>','<span class="fa fa-angle-right"></span>'],
+          "responsive": {
+              "0": {
+                  "items": 1
+              },
+              "600": {
+                  "items": 1
+              },
+              "800": {
+                  "items": 1
+              },
+              "1024": {
+                  "items": 1
+              },
+              "1200": {
+                  "items": 1                    
+              }
+          }
+      });
+  }
+  function initTabsCollection() {
+    if($('.section-home-tabs-collection').length > 0){
+      $('.section-home-tabs-collection .tab-buttons .tab-btn').on('click', function(e) {
+        e.preventDefault();
+        const $this = $(this);
+        if($(this).hasClass('active-btn')) return;
+        $('.section-home-tabs-collection .tabs-content .tab').removeClass('active-tab');
+        $('.section-home-tabs-collection .tabs-collection--box .tab-btn-box .tab-btns li').removeClass('active-btn');
+        const tabID = $(this).attr('data-tab');
+        const tabHandle = $(this).attr('data-handle');
+        $(this).addClass('active-btn');
+        $(tabID).addClass('active-tab');
+        if($this.hasClass('collection-loaded')) return;
+        $.ajax({
+          type: "GET",
+          url: tabHandle + '?view=home-tab-products',
+          complete: function(template) {
+            $(tabID).find('.home-collection-list').html(template.responseText);
+						$this.addClass('collection-loaded');
+							HRT.Index.tabContentCollection(tabID);
+          }
+        })
+       
+        
+      });
+    }
+  }
+  const tuortypesInit = () => {
+      $('.section-home-tour_types .owl-carousel').owlCarousel({
+        "loop": true,
+        "autoplay": true,
+        "margin": 30,
+        "nav": false,
+        "dots": true,
+        "smartSpeed": 500,
+        "autoplayTimeout": 2500,
+        "navText": ['<span class="fa fa-angle-left"></span>','<span class="fa fa-angle-right"></span>'],
+        "responsive": {
+            "0": {
+                "items": 1,
+                "dots": false
+            },
+            "480": {
+                "items": 2,
+                "dots": false
+            },
+            "600": {
+                "items": 3,
+                "dots": false
+            },
+            "800": {
+                "items": 4,
+                "dots": true
+            },
+            "1200": {
+                "items": 6,
+                "dots": true
+            }
+        }
+    });
+  }
+
+  const testimonialsInit = () => {
+       $('.section-home-testimonials .owl-carousel').owlCarousel({
+          "loop": true,
+          "autoplay": true,
+          "margin": 30,
+          "nav": true,
+          "dots": true,
+          "smartSpeed": 500,
+          "autoplayTimeout": 2500,
+          "navText": ['<span class="fa fa-long-arrow-left"></span>','<span class="fa fa-long-arrow-right"></span>'],
+          "responsive": {
+              "0": {
+                  "items": 1
+              },
+              "480": {
+                  "items": 1
+              },
+              "600": {
+                  "items": 1
+              },
+              "800": {
+                  "items": 2
+              },
+              "1024": {
+                  "items": 2
+              },
+              "1200": {
+                  "items": 2
+              }
+          }
+      });
+  }
+
+  const blogInit = () => {
+       $('.section-home-blog .owl-carousel').owlCarousel({
+          "loop": false,
+          "autoplay": true,
+          "margin": 30,
+          "nav": false,
+          "dots": false,
+				 "autoHeight": true,
+          "smartSpeed": 500,
+          "autoplayTimeout": 3000,
+          "navText": ['<span class="fa fa-long-arrow-left"></span>','<span class="fa fa-long-arrow-right"></span>'],
+          "responsive": {
+              "0": {
+                  "items": 1,
+								"dots": true
+              },
+              "480": {
+                  "items": 1,
+								"dots": true
+              },
+              "600": {
+                  "items": 2,
+								"dots": true
+              },
+              "800": {
+                  "items": 2
+              },
+              "1024": {
+                  "items": 3
+              },
+              "1200": {
+                  "items": 3
+              }
+          }
+      });
+  }
+  {%- endif -%}
+$(window).on('load', function () {
+  {%- if template contains 'index' -%}
+  try {
+    opSldier();
+    initTabsCollection();
+    tuortypesInit();
+    testimonialsInit();
+		blogInit();
+    
+
+  } catch (error) {
+    console.log(error);
+  }
+  {%endif%}
+
+});
+</script>

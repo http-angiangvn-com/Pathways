@@ -1,0 +1,164 @@
+<div class="wrapper_layered_filter">
+	<div class="layered_filter_parent {% unless checkFilter %} layered_filter_sortby  {%- endunless -%}">
+		<div class="layered_filter_container">
+			<div class="layered_filter_group layered_filter_mobileContent" id="layered_filter_mobile">
+        <div class="filter_group" aria-expanded="false">
+					<div class="filter_group_block tour-search">
+    				<div class="tour-search-field destination">
+              <div class="item-filter-heading">{{ settings.vendor_title }}</div>
+              <div class="tour-search-field-inner wrapper-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 12.75C13.6569 12.75 15 11.4069 15 9.75C15 8.09315 13.6569 6.75 12 6.75C10.3431 6.75 9 8.09315 9 9.75C9 11.4069 10.3431 12.75 12 12.75Z" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M19.5 9.75C19.5 16.5 12 21.75 12 21.75C12 21.75 4.5 16.5 4.5 9.75C4.5 7.76088 5.29018 5.85322 6.6967 4.4467C8.10322 3.04018 10.0109 2.25 12 2.25C13.9891 2.25 15.8968 3.04018 17.3033 4.4467C18.7098 5.85322 19.5 7.76088 19.5 9.75V9.75Z" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <div class="remove-attr">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12.5 3.5L3.5 12.5" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12.5 12.5L3.5 3.5" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <select class="pa_destination" name="tourtax[pa_destination]">
+                  <option value="none" selected>{{settings.home_search_placeholder_1}}</option>
+                  {% for vendor in collection.all_vendors%}	
+                    <option value="(vendor:product={{vendor | replace: '-', ''}})">{{vendor}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="tour-search-field date">
+              <div class="tour-search-field-inner wrapper-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M16.5 2.25V5.25" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M7.5 2.25V5.25" stroke="#AAAFB6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M3.75 8.25H20.25" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <input type="text" name="date_range" value="">
+                <span id="remove-date-range" class="remove-attr">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12.5 3.5L3.5 12.5" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12.5 12.5L3.5 3.5" stroke="#AAAFB6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+								
+                <div class="t-datepicker">
+    							<div class="t-check-in"></div>
+    							<div class="t-check-out"></div>
+    						</div>
+              </div>
+            </div>
+          </div>
+        </div>
+				<!-- ./filter sortby -->
+				{% if settings.collection_sortby %}
+				<div class="filter_group filter_sortby" aria-expanded="false">
+					<div class="filter_group_block">
+						<div class="filter_group-subtitle">
+							<span>Sắp xếp</span>
+						</div>
+						<div class="filter_group-content">
+							<ul class="checkbox-sortby sort-by-content">									
+								<li><span data-value="price-ascending" data-filter="(price:product=asc)">Giá: Tăng dần</span></li>
+								<li><span data-value="price-descending" data-filter="(price:product=desc)">Giá: Giảm dần</span></li>
+								<li><span data-value="title-ascending" data-filter="(title:product=asc)">Tên: A-Z</span></li>
+								<li><span data-value="title-descending" data-filter="(title:product=desc)">Tên: Z-A</span></li>
+								<li><span data-value="created-ascending" data-filter="(updated_at:product=asc)">Cũ nhất</span></li>
+								<li class="active"><span data-value="created-descending" data-filter="(updated_at:product=desc)">Mới nhất</span></li>
+								<li><span data-value="best-selling" data-filter="(sold_quantity:product=desc)">Bán chạy nhất</span></li>
+								<li><span data-value="quantity-descending" data-filter="(quantity:product=desc)">Tồn kho giảm dần</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% if checkFilter %}
+				<!-- ./filter brand -->
+				{% if settings.use_type_filter %}
+				<div class="filter_group" aria-expanded="false" >
+					<div class="filter_group_block">
+						<div class="filter_group-subtitle">
+							<span>{{settings.type_title}}</span>
+						</div>
+						<div class="filter_group-content filter-brand">
+							<ul class="checkbox-list">
+								{% for type in collection.all_types %}	
+								<li>
+									<input type="checkbox" id="data-brand-p{{forloop.index}}" value="{{type}}" name="brand-filter" data-type="(type:product={{type}})"/>
+									<label for="data-brand-p{{forloop.index}}">{{type}}</label>   
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				<!-- ./filter price -->
+				{% if settings.use_price_filter %}
+				<div class="filter_group" aria-expanded="false" >
+					<div class="filter_group_block">
+						<div class="filter_group-subtitle">
+							<span>{{settings.title_tag_3}}</span>
+						</div>
+						<div class="filter_group-content filter-price">
+							<ul class="checkbox-list">
+								<li>
+									<input type="checkbox" id="p1" name="cc" data-price="(price_variant:product<={{ settings.1_price_to }})" />
+									<label for="p1">
+										<span>Dưới</span> {{ settings.1_price_to | money | replace: ',','.' }}
+									</label>   
+								</li>
+								<li>
+									<input type="checkbox" id="p2" name="cc" data-price="((price_variant:product>{{ settings.2_price_from }})&amp;&amp;(price_variant:product<={{ settings.2_price_to }}))"/>
+									<label for="p2">
+										{{ settings.2_price_from | money | replace: ',','.' }} - {{ settings.2_price_to | money | replace: ',','.' }}
+									</label>   
+								</li>
+								<li>
+									<input type="checkbox" id="p3" name="cc" data-price="((price_variant:product>{{ settings.3_price_from }})&amp;&amp;(price_variant:product<={{ settings.3_price_to }}))"/>
+									<label for="p3">
+										{{ settings.3_price_from | money | replace: ',','.' }} - {{ settings.3_price_to | money | replace: ',','.' }}
+									</label>   
+								</li>
+								<li>
+									<input type="checkbox" id="p4" name="cc" data-price="((price_variant:product>{{ settings.4_price_from }})&amp;&amp;(price_variant:product<={{ settings.4_price_to }}))"/>
+									<label for="p4">
+										{{ settings.4_price_from | money | replace: ',','.' }} - {{ settings.4_price_to | money | replace: ',','.' }}
+									</label>   
+								</li>
+								<li>
+									<input type="checkbox" id="p5" name="cc" data-price="(price_variant:product>={{ settings.5_price_from }})"/>
+									<label for="p5">
+										<span>Trên</span> {{ settings.5_price_from | money | replace: ',','.' }}
+									</label>   
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				<!-- ./filter size -->
+				{% if settings.use_tag_custom_2 %}
+				<div class="filter_group" aria-expanded="false" >
+					<div class="filter_group_block">
+						<div class="filter_group-subtitle">
+							<span>{{settings.tag_title_custom_2}}</span>
+						</div>
+						<div class="filter_group-content filter-size">
+							{% assign tags = settings.enter_tag_2 | split:"," %}
+							<ul class="checkbox-list">
+								{% for tag in tags %}
+								<li>
+									<input type="checkbox" id="data-size-p{{forloop.index}}" value="{{tag}}" name="size-filter" data-size="(variant:product={{tag}})"/>
+									<label for="data-size-p{{forloop.index}}">{{tag}}</label>   
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endif%}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
